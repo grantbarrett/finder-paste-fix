@@ -382,8 +382,10 @@ final class AppState: ObservableObject {
     }
 
     private static var installedAppURL: URL {
-        FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Applications")
-            .appendingPathComponent("FinderPasteFix.app")
+        if let override = ProcessInfo.processInfo.environment["FINDERPASTEFIX_INSTALLED_APP"], !override.isEmpty {
+            return URL(fileURLWithPath: override)
+        }
+
+        return URL(fileURLWithPath: "/Applications/FinderPasteFix.app")
     }
 }

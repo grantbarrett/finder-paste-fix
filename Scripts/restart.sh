@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-INSTALLED_APP="${FINDERPASTEFIX_INSTALLED_APP:-$HOME/Applications/FinderPasteFix.app}"
+INSTALLED_APP="${FINDERPASTEFIX_INSTALLED_APP:-/Applications/FinderPasteFix.app}"
 
 pkill -x FinderPasteFix 2>/dev/null || true
 

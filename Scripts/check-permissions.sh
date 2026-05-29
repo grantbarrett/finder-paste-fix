@@ -2,7 +2,8 @@
 set -euo pipefail
 
 BUNDLE_ID="${1:-local.finderpastefix}"
-INSTALLED_APP="${FINDERPASTEFIX_INSTALLED_APP:-$HOME/Applications/FinderPasteFix.app}"
+INSTALLED_APP="${FINDERPASTEFIX_INSTALLED_APP:-/Applications/FinderPasteFix.app}"
+LEGACY_APP="$HOME/Applications/FinderPasteFix.app"
 USER_TCC_DB="$HOME/Library/Application Support/com.apple.TCC/TCC.db"
 SYSTEM_TCC_DB="/Library/Application Support/com.apple.TCC/TCC.db"
 
@@ -33,9 +34,13 @@ print_tcc_rows() {
 echo "Bundle ID: $BUNDLE_ID"
 echo "Installed app: $INSTALLED_APP"
 
+if [[ -d "$LEGACY_APP" && "$INSTALLED_APP" != "$LEGACY_APP" ]]; then
+  echo "Legacy per-user install: $LEGACY_APP"
+fi
+
 echo
 echo "Running processes"
-ps -axo pid,comm,args | rg "FinderPasteFix|$INSTALLED_APP|DerivedData" || true
+ps -axo pid,comm,args | rg "FinderPasteFix|$INSTALLED_APP|$LEGACY_APP|DerivedData" || true
 
 if [[ -d "$INSTALLED_APP" ]]; then
   echo

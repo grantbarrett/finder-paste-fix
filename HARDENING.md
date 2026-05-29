@@ -57,7 +57,7 @@ These should not sanitize or alter normal pasting.
 ## Permission And Lifecycle
 
 - Create local signing identity
-- Install to `~/Applications/FinderPasteFix.app`
+- Install to `/Applications/FinderPasteFix.app`
 - Reset privacy permissions after changing signing/install workflow
 - First launch before Accessibility is granted
 - After Accessibility is granted but before watcher refresh

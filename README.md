@@ -44,7 +44,7 @@ If you do not have an Apple Development identity, `./Scripts/create-local-signin
 
 ## Build And Run
 
-Build and install the app to `~/Applications/FinderPasteFix.app`:
+Build and install the app to `/Applications/FinderPasteFix.app`:
 
 ```sh
 ./Scripts/install.sh
@@ -65,8 +65,10 @@ Restart the installed app:
 `./Scripts/run.sh` intentionally refuses to launch the temporary Xcode/DerivedData build. Privacy permissions should be granted only to the stable installed copy:
 
 ```text
-~/Applications/FinderPasteFix.app
+/Applications/FinderPasteFix.app
 ```
+
+If `/Applications` is not writable on your machine, run the install from an admin account. For development-only installs, you can override the location with `FINDERPASTEFIX_INSTALL_DIR`, but permission testing should use `/Applications`.
 
 You can build without installing:
 
@@ -99,7 +101,7 @@ If permissions get stuck after changing signing or install workflow:
 ./Scripts/restart.sh
 ```
 
-Then grant Accessibility and Input Monitoring again for `~/Applications/FinderPasteFix.app`.
+Then grant Accessibility and Input Monitoring again for `/Applications/FinderPasteFix.app`.
 
 To verify what macOS is actually seeing:
 
